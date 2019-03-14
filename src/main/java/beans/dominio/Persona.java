@@ -5,14 +5,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "persona")
 public class Persona {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_persona")
-	private int idPersona;
+	private Integer idPersona;
 
 	@Column(nullable = false, length = 50)
 	private String nombre;
@@ -28,6 +30,24 @@ public class Persona {
 
 	@Column(length = 50)
 	private String telefono;
+
+	public Persona() {
+		super();
+	}
+
+	public Persona(String nombre, String apePaterno, String apeMaterno, String email, String telefono) {
+		super();
+		this.nombre = nombre;
+		this.apePaterno = apePaterno;
+		this.apeMaterno = apeMaterno;
+		this.email = email;
+		this.telefono = telefono;
+	}
+
+	public Persona(int idPersona) {
+		super();
+		this.idPersona = idPersona;
+	}
 
 	public int getIdPersona() {
 		return idPersona;
